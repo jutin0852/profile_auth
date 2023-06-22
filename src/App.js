@@ -31,7 +31,7 @@ const router = createBrowserRouter(
         path="signUp"
         element={<SignUpPage profiles={initialProfiles} />}
       />
-      <Route path="profile" element={<ProfilePage />}>
+      <Route path="profile" errorElement={<ErrorPage />} element={<ProfilePage />}>
         <Route
           path=":id"
           element={<UserProfile profiles={initialProfiles} />}
@@ -48,6 +48,8 @@ const router = createBrowserRouter(
             element={<ChangePassword profiles={initialProfiles} />}
           />
         </Route>
+
+
       </Route>
 
       <Route path="*" element={<ErrorPage />} />
