@@ -28,7 +28,6 @@ const SignUpPage = ({ profiles }) => {
   const handleFormSubmit = (e) => {
     e.preventDefault();
     validateOnSubmit();
-    console.log(profiles)
   };
 
   useEffect(() => {

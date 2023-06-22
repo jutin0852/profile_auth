@@ -17,7 +17,7 @@ const ChangePassword = ({ profiles }) => {
     firstName: EditUser.firstName,
     lastName: EditUser.lastName,
     email: EditUser.email,
-    passWord: EditUser.passWord,
+    passWord: "",
   };
 
   const {

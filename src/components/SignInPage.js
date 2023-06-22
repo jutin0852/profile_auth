@@ -35,7 +35,6 @@ const SignInPage = ({ profiles }) => {
     if (emailAuth && passWordAuth) {
       return <Navigate to={`/profile/${emailAuth.email}`} replace={true} />;
     } else if (emailAuth && !passWordAuth) {
-      console.log("incorrect password");
       status = "incorrect password";
     } else {
       console.log("Email not registered");
