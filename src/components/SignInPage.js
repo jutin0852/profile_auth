@@ -5,7 +5,7 @@ import Button from "../button/button";
 import buttonCss from "../button/buttonCss.module.css";
 import { Navigate } from "react-router-dom";
 
-const SignInPage = ({ profiles }) => {
+const SignInPage = ({ profiles, loggedIn }) => {
   const user = {
     email: "",
     passWord: "",
@@ -33,12 +33,11 @@ const SignInPage = ({ profiles }) => {
     );
 
     if (emailAuth && passWordAuth) {
+      loggedIn.splice(0, 1, emailAuth);
       return <Navigate to={`/profile/${emailAuth.email}`} replace={true} />;
     } else if (emailAuth && !passWordAuth) {
       status = "incorrect password";
     } else {
-      console.log("Email not registered");
-
       status = "Email not registered";
     }
   }

@@ -18,23 +18,30 @@ import EditProfileLayout from "./components/EdithProfilePage";
 import ChangePassword from "./components/ChangePassword";
 
 const initialProfiles = [];
+const loggedIn=[]
 
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<PageLayout />}>
-      <Route index element={<HomePage />} />
+      <Route index element={<HomePage loggedIn={loggedIn} />} />
       <Route
         path="signIn"
-        element={<SignInPage profiles={initialProfiles} />}
+        element={<SignInPage profiles={initialProfiles} loggedIn={loggedIn} />}
       />
       <Route
         path="signUp"
         element={<SignUpPage profiles={initialProfiles} />}
       />
-      <Route path="profile" errorElement={<ErrorPage />} element={<ProfilePage />}>
+      <Route
+        path="profile"
+        errorElement={<HomePage loggedIn={loggedIn} />}
+        element={<ProfilePage />}
+      >
         <Route
           path=":id"
-          element={<UserProfile profiles={initialProfiles} />}
+          element={
+            <UserProfile profiles={initialProfiles} loggedIn={loggedIn} />
+          }
         />
         <Route path="editProfile" element={<EditProfileLayout />}>
           <Route
@@ -48,8 +55,6 @@ const router = createBrowserRouter(
             element={<ChangePassword profiles={initialProfiles} />}
           />
         </Route>
-
-
       </Route>
 
       <Route path="*" element={<ErrorPage />} />
